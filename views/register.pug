@@ -1,0 +1,14 @@
+extends layout
+block content
+  h1= title
+  form(action="/account/acc" method="POST"   enctype="multipart/form-data"  )
+      input(type="text" name="name" placeholder="Ismingizni kiriting")
+      input(type="text" name="phone" placeholder="Telefon raqamingizni kiriting")
+      input(type="text" name="username" placeholder="Login kiriting")
+      input(type="password" name="password" placeholder="Parolingizni kiriting")
+      input(type="password" name="password2" placeholder="Parolingizni qaytadan kiriting")
+      input(type="text" name="email" placeholder="Emailngizni kiriting")
+      input(type="file" name="photos" placeholder="Rasmingizni kiriting")
+      button.btn-warning Royhatdan otish
+ 
+

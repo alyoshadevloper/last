@@ -1,0 +1,76 @@
+extends layout
+block content
+ 
+ 
+ .container
+    .row  
+       .col-7
+            .products() 
+                .product_img
+                    img(src=  "/"+datas.photo , alt="")
+                    p.saleing= datas.sale
+                        | %
+                h2= datas.title
+                .price.price.price_group 
+                  span 
+                    i(class="fas fa-tags")  
+                  p.prices= ` ${datas.price - (datas.price * datas.sale / 100)}Sum`
+                  p.prices_sale= datas.price 
+                    | Sum    
+                h2 Tavsif
+                p.comment= datas.comments  
+                ul.bottom_ul
+                    li.list-group-item.d-flex.justify-content-between 
+                        span.writeLike= datas.like
+                        span(class=' ml-2 d-block ' style="font-size: 20px;") 
+                            i.far.fa-heart
+                    li.list-group-item= datas.dateNow.toDateString()
+                     span 
+                        i(class="far fa-calendar-alt")
+                    li.list-group-item.category= datas.category
+       .col-5.user_information 
+          h3 Foydalanuvchi 
+          .user-card
+            .user-card-img
+                img(src="/"+prof.photo, alt="")
+            .user-card-info.w-75
+                p.user_name= prof.name 
+                p.user_date= prof.dateNow.toDateString()
+                 i(class="fas fa-calendar-times")   
+                .bottom-user-card
+                    p.user_phone.btn.btn-warning.w-75= prof.phone
+          .user_product
+            h3 Muallifning  e'lonlari
+             .banner_user
+               each dat in db
+                if dat.dirUser == prof.id  
+                 if dat.id != datas.id     
+                  .banner_user_product 
+                    .banner_user_img
+                      img(src="/"+dat.photo, alt="")
+                    .banner_user_text
+                      a(href="/product/"+dat.id class='banner_user_id')= dat.title
+                      p.price= dat.price 
+                        | Sum
+                                            
+    .row
+      .col-12
+        if user
+         if user.id == datas.dirUser
+          .btn-group
+                a(href="/product/edit/"+datas.id class="btn btn-success") ozgartirsh  
+                a(href="/product/delete/"+datas.id class="btn btn-danger") O'chirish 
+      .col-12
+        h2 Boshqa e'lonlari
+        .d-flex.boottom-card-box
+          each bottom in db
+           if bottom.id != datas.id
+            .bottom-card
+              .bottom-card-img
+                img(src="/"+bottom.photo, alt="")
+              .bottom-card-text
+                a(href="/product/"+bottom.id)= bottom.title
+                p.price= bottom.price
+                  | Sum
+      h3.footer footer
+              

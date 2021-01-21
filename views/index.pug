@@ -1,0 +1,38 @@
+extends layout
+block content
+ h1= title
+ 
+ .container
+    .row
+      each db in datas     
+        .col-4
+            .card(style='width: 100%;' )
+                .product_img(userId= '/product/'+db.id)
+                    img.card-img-top.w-100(src= db.photo , alt="")
+                    p.saleing= db.sale
+                          | %
+                .card-body
+                    a.text-dark(href=`/product/${db.id}`)
+                        h5.card-title= db.title
+
+                ul.list-group.list-group-flush
+                    li.list-group-item.price_group 
+                        span 
+                            i(class="fas fa-tags")      
+                        p.prices=  ` ${db.price - (db.price * db.sale / 100)}Sum`
+                        p.prices_sale= db.price 
+                            | Sum 
+                ul.bottom_ul
+                    li.list-group-item.d-flex.justify-content-between 
+                        span.writeLike= db.like
+                        span(class='likes ml-5 d-block ' userIds="/like/"+db.id style="font-size: 20px;") 
+                            i.far.fa-heart
+                    li.list-group-item= db.dateNow.toDateString()
+                     span 
+                        i(class="far fa-calendar-alt")
+                    li.list-group-item.category= db.category
+    .col-12
+        .pages 
+           -for(var i = 1 ; i <= pages; i++)
+              a(href="/?page="+i)= i
+                 

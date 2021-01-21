@@ -1,0 +1,39 @@
+.navs
+  .container-fluid
+    nav.navbar.navbar-expand-lg
+      a.navbar-brand(href="/") Olx
+      #navbarSupportedContent.collapse.navbar-collapse
+
+        form.form-inline.my-2.my-lg-0.m-auto(action="/search" class='search')       
+          input.form-control.mr-sm-2.w-75(type="text" name="search" placeholder="Nima topish kerak")
+          button.btn.btn-outline-success.my-2.my-sm-0(type='submit') 
+            i(class="fas fa-search")
+        .account(style="position: relative")
+          a#navbarDropdown.nav-link.dropdown-toggle.d-flex.align-items-center(role='button' data-toggle='dropdown')
+            .icon.text-white(style="font-size: 35px")
+              i.fal.fa-user-circle
+            p.text-white(style="margin: 0 7px;") Мой профиль
+          .dropdown-menu(aria-labelledby='navbarDropdown' style="border-radius: 0px 0px 4px 4px; border: none; top: 90%; left: 0; right: 0; margin: auto; width: 70%;")
+           if !user 
+            a.dropdown-item(href='/login/log') Войти
+            a.dropdown-item(href='/account/acc') Регистрация
+           else
+            a.dropdown-item(href='/logout') Logout
+        ul.navbar-nav
+         if user
+          li.nav-item
+            a.nav-link.btn.btn-light.add-ad(href='/add') E'lon berish    
+        .kurs
+          if kurs 
+            each valyuta in kurs 
+              if valyuta.Ccy == "USD"
+                p  
+                  i(class="fas fa-dollar-sign")
+                p= valyuta.Rate
+          else
+            each valyuta in kurs  ? valyuta : []
+              if valyuta.Ccy == "USD"
+                p= valyuta.Ccy
+                p= valyuta.Rate
+
+

@@ -1,0 +1,40 @@
+ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    a.navbar-brand(href='/') Olx 
+    #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav 
+          li.nav-item
+            a.nav-link(href='/add') Mahsulot qoshish sahifasi
+        form.form-inline.my-2.my-lg-0(action="/search" class='search')
+          input.form-control.mr-sm-2.w-75(type="text" name="search" placeholder="Nima topish kerak")
+          button.btn.btn-outline-success.my-2.my-sm-0.w-25(type='submit') Qidirish            
+        .kurs
+                if kurs 
+                  each valyuta in kurs 
+                  if valyuta.Ccy == "USD"
+                    p= valyuta.Ccy
+                    p= valyuta.Rate
+                else
+                  each valyuta in kurs  ? valyuta : []
+                    if valyuta.Ccy == "USD"
+                        p= valyuta.Ccy
+                        p= valyuta.Rate    
+
+
+                         .col-4
+            .product() 
+                .product_img(userId= '/product/'+db.id)
+                    img(src= db.photo , alt="")
+                    p.saleing= db.sale
+                        | %
+                h2= db.title
+                .price
+                    p= db.price
+                     | $
+                    p.sale_price= db.price - (db.price * db.sale / 100) 
+                    | SALE
+                .product_bottom
+                    p.like 
+                        span(class= 'writeLike' )= db.like
+                        span(class='likes ml-5 ' userIds="/like/"+db.id) like
+                    p.date=  db.dateNow.toDateString()
+                    p.category= db.category 

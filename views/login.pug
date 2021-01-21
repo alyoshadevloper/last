@@ -1,0 +1,13 @@
+extends layout
+block content
+  .login-page
+    h2.text-center.mt-3= title
+    form(action="/login/log" method="POST")
+        label(for='userEmail' style="text-align: start; margin-right: auto; padding-left: 20px") Email или номер телефона
+        input#userEmail(type="text" name="username" placeholder="Email или номер телефона")
+        label(for='userPassword' style="text-align: start; margin-right: auto; padding-left: 20px") Email или номер телефона
+        input#userPassword(type="password" name="password" placeholder="Ваш текущий пароль")
+        a(href="/account/forgotpassword/") Не можете войти?
+        button Royhatdan otish
+    span.about Входя в раздел Мой профиль, вы принимаете Условия использования сайта
+    

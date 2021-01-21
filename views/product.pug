@@ -1,0 +1,20 @@
+extends layout
+block content
+
+  .container
+    .row
+      .col-8
+        .img
+          img(src="/"+datas.photo, alt="")
+        .text_porduct
+          h1= datas.title
+          p.price= datas.price
+          p.comments= datas.comments
+
+      .col-4
+        .users
+          h5 Foydalanuvchi
+          h1 User
+          a(href="") 909099090
+      .col-12
+        a(href="/product/edit/" + datas.id) ozgartirsh

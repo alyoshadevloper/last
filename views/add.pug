@@ -1,0 +1,33 @@
+extends layout
+block content
+  h1= title
+  if datas
+    form(action="" method="POST"   enctype="multipart/form-data"  )
+        input(type="text" name="title" placeholder="Mahsulotning nomi" value=datas.title)
+        input(type="text" name="price" placeholder="Mahsulotning narxi" value=datas.price)
+        input(type="text" name="sale" placeholder="Mahsulotning chegirmasi" value=datas.sale)
+        select(name="category")
+            option(value="car") car
+            option(value="phone") phone
+            option(value="clothes") clothes
+            option(value="books") books
+            option(value="job") job
+        input(type="file" name="photo" placeholder="Mahsulotning rasmi")
+        textarea(name="comments", cols="30", rows="10" value=datas.comments)
+
+        button.btn-danger Jonatish
+  else
+    form(action="" method="POST"   enctype="multipart/form-data"  )
+        input(type="text" name="title" placeholder="Mahsulotning nomi" )
+        input(type="text" name="price" placeholder="Mahsulotning narxi" )
+        input(type="text" name="sale" placeholder="Mahsulotning chegirmasi" )
+        select(name="category")
+            option(value="car") car
+            option(value="phone") phone
+            option(value="clothes") clothes
+            option(value="books") books
+            option(value="job") job
+        input(type="file" name="photo" placeholder="Mahsulotning rasmi")
+        textarea(name="comments", cols="30", rows="10"  )
+
+        button.btn-danger Jonatish

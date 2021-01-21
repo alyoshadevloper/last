@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node  app.js",
-    "start:dev": "nodemon app.js"
+    "start:dev": "nodemon bin/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,10 +13,12 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
+    "debug": "^4.3.1",
     "express": "^4.17.1",
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
     "express-validator": "^5.3.1",
+    "http-errors": "^1.8.0",
     "mongoose": "^5.11.10",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",

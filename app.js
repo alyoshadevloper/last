@@ -91,6 +91,8 @@ app.use(rAdd)
 app.use(rUser)
 
 
-app.listen(3000 , () => {
-    console.log('server 3000 portda ishladi')
-})
+// app.listen(3000 , () => {
+//     console.log('server 3000 portda ishladi')
+// })
+
+module.exports = app
